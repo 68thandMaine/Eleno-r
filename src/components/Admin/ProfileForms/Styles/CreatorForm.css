@@ -1,0 +1,178 @@
+.creatorFormWrapper {
+  background-color: #EDF0F0;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.headerWrapper {
+  top: 0;
+  display: flex;
+  margin-bottom: 15px;
+}
+.headerBanner {
+  display: inline-block;
+  max-height: 100%;
+  width: 50%;
+  padding: 10px 0 0 15px;
+}
+.titleStyles {
+  font-family: FoxCat;
+  font-size: 42px;
+  color: black;
+  margin: 0 0 0 10px;
+  padding-top: 8px 
+}
+.titleStyles + p {
+  padding-left: 18%;
+}
+.profilePicWrapper {
+  max-height: 100%;
+  width: 65%;
+  display: inline-block;
+  padding: 5px 16% 5px 0;
+}
+.profilePicStyles {
+  float: right;
+  border-radius: 50%;
+  height: 102px;
+  width: 102px;
+  object-fit: fill;
+  object-position: 50% 50%;
+}
+.formWrapperStyles {
+  position: relative;
+  background-color: white;
+  max-height: 790px;
+}
+.form_GeneralInfoWrapper {
+  margin-bottom: 25px;
+  position: relative;
+}
+.form_ProfileContentWrapper {
+  position: relative;
+}
+.form_TitleHeaders {
+  border: solid 2px grey;
+  background-color: grey;
+  opacity: .5;
+  display: block;
+  font-family: FoxCat;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 0 0 0 30px;
+  margin: -15px 0 0 5px;
+}
+.formContentWrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-evenly;
+}
+.inputWrapper {
+
+  width: 80%;
+  margin: 0 10% 0 10%;
+}
+.labelStyles {
+  font-family: Kiona;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: left;
+}
+form input {
+  height:32px;
+  padding-left:15px;
+  padding-right:15px;
+  border: 1px solid #dbe2e8;
+  font-size:20px;
+  font-family: FoxCat;
+  border-radius:2px;
+  color:#636363;
+  box-shadow: 0 2px 2px 0 rgba(46, 60, 73, 0.05);
+  outline:none;
+  width: 100%;
+}
+form textarea {
+  margin-top: 3%;
+  width:100%;
+  max-width: 100%;
+  min-height: 5%;
+  height: 25%;
+  padding-left:15px;
+  padding-right:15px;
+  padding-top:15px;
+  border: 1px solid #dbe2e8;
+  font-size:14px;
+  border-radius:2px;
+  color:#636363;
+  font-family: FoxCat;
+  box-shadow: 0 2px 2px 0 rgba(46, 60, 73, 0.05);
+  outline:none;
+  }
+.buttonWrapper{
+  position: relative;
+  bottom: 100pt;
+  left: 34pt;
+  display: grid;
+  z-index: 2;
+  width: 40.5%;
+}
+.creatorFormButton { 
+  width: 100%;
+  padding: 15px 40px;
+  text-align: center;
+  color: #000;
+  font-family: Kiona;
+  border-radius: 4px;
+  border: none;
+  font-size: 20px;
+  background: linear-gradient(214deg, #d4f0e8, #b4b4b4, #dfdfdf, #cccccc, #89919b, #b2b8bf, #eaf4ff, #d1d7dd, #aebfd0, #b5bdc5, #c9d5e1, #c7cdd4, #9aa4b0, #99a3b0, #bec1c6, #96a1b4);
+  background-size: 3200% 3200%;
+  -webkit-animation: ButtonAnimation 40s ease infinite;
+  animation: ButtonAnimation 40s ease infinite;
+}
+@-webkit-keyframes ButtonAnimation {
+  0%{background-position:0% 20%}
+  50%{background-position:100% 81%}
+  100%{background-position:0% 20%}
+}
+@keyframes ButtonAnimation { 
+  0%{background-position:0% 20%}
+  50%{background-position:100% 81%}
+  100%{background-position:0% 20%}
+}
+.containerProfileContent {
+  display: flex;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.containerProfileContent_Left{
+  max-height: 100%;
+  width: 100%;
+  width: 50%;
+  position: relative;
+  padding-left: 3px;
+  z-index: 0;
+}
+.containerProfileContent_Left .formContentWrapper {
+  display: block;
+  width: 81%;
+  margin: 0 0 0 9.3%;
+  height: auto;
+}
+.containerProfileContent_Right{
+  max-height: 100%;
+  z-index: 0;
+  width: 50%;
+  position: relative;
+ 
+}
+.containerProfileContent_Right .formContentWrapper {
+  display: block;
+  width: 100%;
+  margin: 0;
+  z-index: 0;
+}
+

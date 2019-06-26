@@ -1,0 +1,33 @@
+@font-face{
+  font-family: 'Kiona';
+  font-style: 'regular';
+  font-weight: '100';
+  src:url(../../../../assets/fonts/Kiona-Regular.ttf)format('truetype');
+}
+
+.wrapperStyles {
+  border: solid 1px black;
+  height: 100%;
+  width: auto;
+  right: 0;
+  top: 0;
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.controlButtons {
+  border: 1px red solid;
+  font-family: Kiona;
+  height: 150px;
+  width: 350px;
+  font-size: 36px;
+  display: inline-block;
+}
+
+.linkStyles {
+  margin: 0 3%;
+  top: -100
+}

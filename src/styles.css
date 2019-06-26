@@ -1,0 +1,142 @@
+@font-face{
+  font-family: 'danielBold';
+  font-style: 'bold';
+  font-weight: '100';
+  src:url(./assets/fonts/daniel/danielbd.ttf)format('truetype');
+}
+@font-face {
+  font-family: 'daniel';
+  font-style: 'normal';
+  src: url(./assets/fonts/daniel/daniel.ttf)format('truetype');
+}
+@font-face{
+  font-family: 'woodlands';
+  font-style: 'normal';
+  font-weight: '100';
+  src:url(./assets/fonts/wild/woodlands.ttf)format('truetype');
+}
+@font-face{
+  font-family: 'Athena';
+  font-style: 'normal';
+  font-weight: '100';
+  src:url(./assets/fonts/Athena/Athena.ttf)format('truetype');
+}
+@font-face{
+  font-family: 'FoxCat';
+  font-style: 'normal';
+  font-weight: '100';
+  src:url(./assets/fonts/Fox-Cat/Fox-Cat.ttf)format('truetype');
+}
+label, p {
+  font-family: 'Athena';
+}
+<<<<<<< HEAD
+
+=======
+input[type='text'] {
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  border-radius: unset;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.70);
+  line-height: 1.235;
+  padding: 7px 14px;
+  width: 500px;
+  display: inline-block;
+}
+textarea {
+  width: 500px;
+  height: 200px;
+  color: rgba(0, 0, 0, 0.70);
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  border-radius: unset;
+  box-sizing: border-box;
+  display: inline-block;
+}
+>>>>>>> master
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* Contact.jsx styles */
+.subtitles{
+  color: red;
+}
+.subtitles:hover {
+  color: blue;
+}
+.required {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  color: #aaa;
+  font-weight: 400;
+}
+
+/* End Contact.jsx styles */
+
+
+/* <Gallery /> styling */
+
+.categoryListContainer {
+  position: relative;
+  right: 6%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 110%;
+  justify-content: space-between;
+  margin:0 5% 0 5%;
+}
+
+.categoryListContainer .categoryContainer {
+  position: relative;
+  display: flex;
+  flex: 0 1 auto;
+  margin: 20px 32px 0;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 29px;
+  font-family: danielBold;
+  line-height: 1.3rem
+}
+
+.categoryContainer .imageContainer {
+  flex: 1;
+  width: 33.3%;
+  box-sizing: border-box;
+  position: static;
+}
+
+.imageContainer img {
+  height: 225px;
+  width: 225px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  -webkit-fliter:blur(5px);
+  filter: blur(5px);
+}
+.imageContainer:hover .centered {
+  -webkit-fliter:blur(15px);
+  filter: blur(15px);
+
+}
+.imageContainer img:hover {
+  -webkit-fliter:blur(0px);
+  filter: blur(0px);
+  background-color: #555;
+}
+
+/* End <Gallery /> styling */
+
+/* Content Page Styles */

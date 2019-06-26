@@ -1,0 +1,13 @@
+.currentProfileTitleWrapper { 
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.aboutMeWrapper {
+  padding: 5% 0 0 3%;
+  width: 99%;
+  height: 43%;
+  max-height: 59%;
+  border: solid 1px lightslategray;
+}
