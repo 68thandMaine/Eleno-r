@@ -12,7 +12,7 @@ class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewOnPage: 'Home'
+      viewOnPage: 'Contact'
     };
     this.handleChangingViewToHome = this.handleChangingViewToHome.bind(this),
     this.handleChangingViewToBio = this.handleChangingViewToBio.bind(this),

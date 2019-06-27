@@ -15,7 +15,6 @@ class App extends React.Component {
     super(props);
     this.dispatch = this.props.dispatch;
     const {watchFirebaseGalleryRef, watchFirebaseContactCreatorRef, watchFirebaseProfileRef } = actions;
-    this.dispatch(watchFirebaseContactCreatorRef());
     this.dispatch(watchFirebaseGalleryRef());
     this.dispatch(watchFirebaseProfileRef());
   }

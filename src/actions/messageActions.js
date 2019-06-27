@@ -10,16 +10,16 @@ export function uploadMessage(_firstName, _lastName, _email, _subject, _message)
     email: _email,
     subject: _subject,
     message: _message,
-    createdAt: new Date(),
+    createdAt: new Moment().format('ddd MMMM Do YYYY'),
     opened: false,
     replied: false
   }).then(res => {
-    console.log(res);
+    console.log('uploadMessage succesful response: ', res);
     
   }).catch(err => {
     // Add logic to handle error.
-    console.log(err);
-  })
+    console.log('UPLOADMESSAGE ERROR: ',err);
+  });2
 }
 
 function postDataSuccess(data) {

@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import AdminSideNav from './AdminSideNav';
-import LandingPage from './AdminLandingPage';
-import Inbox from './Inbox/Inbox';
 import ProfileFormControl from './ProfileForms/ProfileFormControl';
 import ContentFormControl from './ContentForms/ContentFormControl';
 
@@ -14,8 +11,7 @@ class Admin extends React.Component {
       viewOnPage: 'ProfileControls'
     };
     this.handleChangingViewToProfileControls = this.handleChangingViewToProfileControls.bind(this),
-    this.handleChangingViewToContentControls = this.handleChangingViewToContentControls.bind(this),
-    this.handleChangingViewToInbox = this.handleChangingViewToInbox.bind(this);
+    this.handleChangingViewToContentControls = this.handleChangingViewToContentControls.bind(this)
   }
   handleChangingViewToProfileControls() {
     this.setState({viewOnPage: 'ProfileControls'});
@@ -50,15 +46,12 @@ class Admin extends React.Component {
         <div style={menuStyles}>
           <AdminSideNav 
             onViewProfileControls = {this.handleChangingViewToProfileControls}
-            onViewInbox = {this.handleChangingViewToInbox}
             onViewContentControls = {this.handleChangingViewToContentControls}
           /> 
         </div>
         <div style={contentStyles}>
           {{
-            Landing: <LandingPage />,
             ProfileControls: <ProfileFormControl currentRouterPath={this.props.currentRouterPath} />,
-            Inbox: <Inbox />,
             ContentControls: <ContentFormControl />,
           }[this.state.viewOnPage]}
         </div>
