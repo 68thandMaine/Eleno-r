@@ -1,9 +1,9 @@
 import React from 'react';
-import Content from './Content';
+import Content from '../components/Portfolio/Content';
 import PropTypes from 'prop-types';
-import CategoryContentCarousel from './CategoryContentCarousel';
+import CategoryContentCarousel from '../components/Portfolio/CategoryContentCarousel';
 import { connect } from 'react-redux';
-import { returnToCarousel, selectImage} from '../../actions';
+import { returnToCarousel, selectImage} from '../actions';
 
 class CategoryContentControl extends React.Component {
   constructor(props){

@@ -1,6 +1,6 @@
 import Firebase from 'firebase';
 import constants from '../constants';
-import MessageService from '../services/MessageService';
+
 const { firebaseConfig, action } = constants;
 import Moment from 'moment';
 
@@ -13,27 +13,6 @@ function getDataSuccess(data) {
   return {
     type: action.GET_DATA_SUCCESS,
     data: data
-  };
-}
-
-
-function receiveMessage(messageFromFirebase) {
-  return {
-    type: action.RECEIVE_MESSAGE,
-    message: messageFromFirebase
-  };
-}
-
-
-export function watchFirebaseContactCreatorRef() {
-  return function (dispatch) {
-    contactCreator.on('child_added', data => {
-      const newMessage = Object.assign({}, data.val(), {
-        id: data.getKey(),
-        formattedTime: new Moment(data.val().date).format('dddd, MMM Do YYY')
-      });
-      dispatch(receiveMessage(newMessage));
-    });
   };
 }
 
@@ -127,7 +106,7 @@ export function uploadProfile(_displayName, _imgFile, _firstName, _lastName, _em
         }
       }, function() {
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          console.log('the proof', downloadURL)
+          console.log('the proof', downloadURL);
           let downloadUrl = downloadURL;
           let postKey = profileInformation.push().key;
           let updates = {};

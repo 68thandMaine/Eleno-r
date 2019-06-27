@@ -1,23 +1,32 @@
 import React from 'react';
-import SideNav from './SideNav';
-import Home from './Home';
-import AboutMe from './AboutMe';
-import GalleryControl from './GalleryControl';
-import Contact from './Contact';
 import { connect } from 'react-redux';
 import { returnToGallery } from '../../actions';
 import PropTypes from 'prop-types';
+// Components
+import AboutMe from './AboutMe';
+import ContactForm from './ContactForm';
+import GalleryControl from '../../views/GalleryControl';
+import Home from './Home';
+import Message from './Message';
+import Modal from '../Modal/Modal';
+import SideNav from './SideNav';
+// Stylesheet
+import './Styles/MainPage.css';
 
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewOnPage: 'Home'
+      viewOnPage: 'Home',
+      showModal: false,
+      modalMessage: '',
     };
     this.handleChangingViewToHome = this.handleChangingViewToHome.bind(this),
     this.handleChangingViewToBio = this.handleChangingViewToBio.bind(this),
     this.handleChangingViewToGallery = this.handleChangingViewToGallery.bind(this),
-    this.handleChangingviewToContact = this.handleChangingviewToContact.bind(this);
+    this.handleChangingviewToContactForm = this.handleChangingviewToContactForm.bind(this),
+    this.handleShowingModal = this.handleShowingModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   handleChangingViewToHome() {
@@ -32,51 +41,41 @@ class MainPage extends React.Component {
     this.setState({ viewOnPage: 'Gallery' });
     this.props.dispatch(returnToGallery());
   }
-  handleChangingviewToContact() {
-    this.setState({ viewOnPage: 'Contact' });
+  handleChangingviewToContactForm() {
+    this.setState({ viewOnPage: 'ContactForm' });
     this.props.dispatch(returnToGallery());
   }
+  handleShowingModal(message) {
+    this.setState({ modalMessage: message});
+    this.setState({ showModal: true });
+  }
+  closeModal(){
+    this.handleChangingViewToHome();
+    this.setState({showModal: false });
+  }
+  
   render() {
 
-    const containerStyles = {
-      display: 'flex',
-      flexDirection: 'row',
-      width: 'auto'
-    };
-    const menuStyles = {
-      position: 'fixed',
-      alignSelf: 'flex',
-      width: '50px',
-      left: '5%',
-      paddingRight: '25px'
-    };
-    const contentStyles = {
-      display: 'flex',
-      width: '75%',
-      margin: '0 100px 0 200px',
-      paddingLeft: '6%',
-      paddingRight: '5%',
-      position: 'relative',
-      top: '63px',
-    };
-
     return (
-      <div style={containerStyles}>
-        <div style={menuStyles}>
-          <SideNav
-            onViewHomePage={this.handleChangingViewToHome}
-            onViewBio={this.handleChangingViewToBio}
-            onViewGallery={this.handleChangingViewToGallery}
-            onViewContact={this.handleChangingviewToContact} />
-        </div>
-        <div style={contentStyles}>
-          {{
+      <div>
+        <div className={this.state.showModal ? 'containerStyles blur' : 'containerStyles'}>
+          <div className='menuStyles'>
+            <SideNav
+              onViewHomePage={this.handleChangingViewToHome}
+              onViewBio={this.handleChangingViewToBio}
+              onViewGallery={this.handleChangingViewToGallery}
+              onViewContactForm={this.handleChangingviewToContactForm} />
+          </div>
+          <div className='contentStyles'>
+            {{
             Home: <Home />,
             Bio: <AboutMe />,
             Gallery: <GalleryControl galleryByCategory={this.props.gallery}/>,
-            Contact: <Contact />
-          }[this.state.viewOnPage]}
+              ContactForm: <ContactForm showModal={this.handleShowingModal} />
+            }[this.state.viewOnPage]}
+          </div>
         </div>
+        { this.state.showModal ? <Modal close={this.closeModal}> <Message modalMessage={this.state.modalMessage}></Message> </Modal> : null }
       </div>
     );
 

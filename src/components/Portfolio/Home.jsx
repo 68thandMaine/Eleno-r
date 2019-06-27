@@ -17,14 +17,13 @@ function Home() {
 
   return (
 
-    <div style={wrapperStyles}>
+    <div style={wrapperStyles} data-cy='homeView'>
       <Carousel
         showThumbs={false}
         showIndicators={false}
         showArrows={false}
         showStatus={false}>
         <img style={imageStyles} src={require('./../../assets/images/spaceladies.jpeg')}/>
-        <p className='legend'></p>
       </Carousel>
     </div>
 

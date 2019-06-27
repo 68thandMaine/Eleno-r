@@ -1,0 +1,77 @@
+.contactForm_Wrapper {
+  align-items: center;
+  display: block;
+  height: auto;
+  margin-right: 20%;
+  position: relative;
+  top: -12%;
+  width: 100%;
+}
+
+.contactForm_Header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  position: relative;
+  text-align: center;
+}
+
+.contactForm_Title {
+  display: inline-block;
+  font-family: danielBold;
+  font-size: 40px;
+  margin-bottom: 0
+}
+
+.contactForm_Subtitle {
+  bottom: 20px;
+  display: inline-block;
+}
+
+.contactForm_FormWrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-height: auto;
+  position: relative;
+}
+
+.contactForm_Style {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 500px;
+}
+
+.contactForm_Label {
+  display: inline-block;
+  float:none;
+  font-family: Montserrat, sans-serif;
+  font-weight:bold;
+  margin-top: 2%;
+}
+
+.contactForm_Input {
+  background: rgba(0,0,0,0.08);
+  border-radius: unset;
+  box-sizing: border-box;
+  color: rgba(0;0;0;0.70);
+  font-size: 22px;
+  line-height: 1.235;
+  padding: 12px 12px;
+}
+
+.contactForm_Button {
+  background-color: #000000;
+  border: none;
+  border-radius: unset;
+  box-sizing: border-box;
+  color: #ffffff;
+  height: 30px;
+  margin-top: 2%;
+  width: 100px;
+}
+
+.required {
+  border-color: red;
+}

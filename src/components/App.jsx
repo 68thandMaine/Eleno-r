@@ -3,7 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 import MainPage from './Portfolio/MainPage';
 import Admin from './Admin/Admin';
-import APIControl from './Admin/Search/APIControl';
+
 import NotFound from './ErrorPages/NotFound';
 import * as actions from './../actions';
 import PropTypes from 'prop-types';
@@ -14,8 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.dispatch = this.props.dispatch;
-    const {watchFirebaseGalleryRef, watchFirebaseContactCreatorRef, watchFirebaseProfileRef } = actions;
-    this.dispatch(watchFirebaseContactCreatorRef());
+    const {watchFirebaseGalleryRef, watchFirebaseProfileRef } = actions;
     this.dispatch(watchFirebaseGalleryRef());
     this.dispatch(watchFirebaseProfileRef());
   }
@@ -41,7 +40,6 @@ class App extends React.Component {
           <Switch>
             <Route exact path ='/' component={MainPage} />
             <Route path ='/Admin' render={(props)=><Admin currentRouterPath={props.location.pathname} />} />
-            <Route path ='/Eleno-r' component ={APIControl} />
             <Route path ='*' component={NotFound} />
           </Switch> 
         </div>

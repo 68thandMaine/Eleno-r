@@ -1,4 +1,4 @@
-import galleryListReducer from './../../src/reducers/gallery-list-reducer';
+import galleryListReducer from '../../src/reducers/gallery-list-reducer';
 
 describe('galleryListReducer', () => {
 
