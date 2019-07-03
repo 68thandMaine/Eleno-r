@@ -19,7 +19,7 @@ export function uploadMessage(_firstName, _lastName, _email, _subject, _message)
   }).catch(err => {
     // Add logic to handle error.
     console.log('UPLOADMESSAGE ERROR: ',err);
-  });2
+  });2;
 }
 
 function postDataSuccess(data) {

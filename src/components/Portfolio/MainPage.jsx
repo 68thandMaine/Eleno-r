@@ -2,8 +2,8 @@ import React from 'react';
 import SideNav from './SideNav';
 import Home from './Home';
 import AboutMe from './AboutMe';
-import GalleryControl from './GalleryControl';
-import Contact from './Contact';
+import GalleryControl from '../../views/GalleryControl';
+import ContactForm from './ContactForm';
 import { connect } from 'react-redux';
 import { returnToGallery } from '../../actions';
 import PropTypes from 'prop-types';
@@ -12,12 +12,12 @@ class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewOnPage: 'Contact'
+      viewOnPage: 'ContactForm'
     };
     this.handleChangingViewToHome = this.handleChangingViewToHome.bind(this),
     this.handleChangingViewToBio = this.handleChangingViewToBio.bind(this),
     this.handleChangingViewToGallery = this.handleChangingViewToGallery.bind(this),
-    this.handleChangingviewToContact = this.handleChangingviewToContact.bind(this);
+    this.handleChangingviewToContactForm = this.handleChangingviewToContactForm.bind(this);
   }
 
   handleChangingViewToHome() {
@@ -32,8 +32,8 @@ class MainPage extends React.Component {
     this.setState({ viewOnPage: 'Gallery' });
     this.props.dispatch(returnToGallery());
   }
-  handleChangingviewToContact() {
-    this.setState({ viewOnPage: 'Contact' });
+  handleChangingviewToContactForm() {
+    this.setState({ viewOnPage: 'ContactForm' });
     this.props.dispatch(returnToGallery());
   }
   render() {
@@ -67,14 +67,14 @@ class MainPage extends React.Component {
             onViewHomePage={this.handleChangingViewToHome}
             onViewBio={this.handleChangingViewToBio}
             onViewGallery={this.handleChangingViewToGallery}
-            onViewContact={this.handleChangingviewToContact} />
+            onViewContactForm={this.handleChangingviewToContactForm} />
         </div>
         <div style={contentStyles}>
           {{
             Home: <Home />,
             Bio: <AboutMe />,
             Gallery: <GalleryControl galleryByCategory={this.props.gallery}/>,
-            Contact: <Contact />
+            ContactForm: <ContactForm />
           }[this.state.viewOnPage]}
         </div>
       </div>

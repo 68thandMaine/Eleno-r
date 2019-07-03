@@ -1,9 +1,9 @@
 import React from 'react';
-import Gallery from './Gallery';
+import Gallery from '../components/Portfolio/Gallery';
 import CategoryContentControl from './CategoryContentControl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { returnToGallery } from '../../actions';
+import { returnToGallery } from '../actions';
 
 class GalleryControl extends React.Component{
   constructor(props) {

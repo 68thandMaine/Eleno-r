@@ -127,7 +127,7 @@ export function uploadProfile(_displayName, _imgFile, _firstName, _lastName, _em
         }
       }, function() {
         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          console.log('the proof', downloadURL)
+          console.log('the proof', downloadURL);
           let downloadUrl = downloadURL;
           let postKey = profileInformation.push().key;
           let updates = {};

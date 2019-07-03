@@ -2,7 +2,8 @@ import React from 'react';
 import './../../styles.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { uploadMessage } from './../../actions/messageActions';
+import { uploadMessage } from '../../actions/messageActions';
+import SuccessMessage from './Message';
 
 function Contact(props) {
   let _firstName =null;
@@ -78,15 +79,19 @@ function Contact(props) {
     marginTop: '2%',
   };
 
-  function handleContactingCreator(event){
-    event.preventDefault();
-    const {dispatch} = props;
-    dispatch(uploadMessage(_firstName.value, _lastName.value, _email.value, _subject.value, _message.value));
+  function resetForm() {
     _firstName.value = '',
     _lastName.value = '',
     _email.value = '',
     _subject.value = '',
     _message.value = '';
+  }
+
+  function handleContactingCreator(event){
+    event.preventDefault();
+    const {dispatch} = props;
+    dispatch(uploadMessage(_firstName.value, _lastName.value, _email.value, _subject.value, _message.value));
+    resetForm();
   }
 
   return (
@@ -147,9 +152,10 @@ function Contact(props) {
             }}/>
 
           <button type='submit' style={buttonStyles}>Submit</button>
+        <SuccessMessage />
+
         </form>
       </div>
-
     </div>
   );
 }
