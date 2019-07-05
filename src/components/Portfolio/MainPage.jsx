@@ -1,12 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { returnToGallery } from '../../actions';
+import PropTypes from 'prop-types';
+// Components
 import SideNav from './SideNav';
 import Home from './Home';
 import AboutMe from './AboutMe';
 import GalleryControl from '../../views/GalleryControl';
 import ContactForm from './ContactForm';
-import { connect } from 'react-redux';
-import { returnToGallery } from '../../actions';
-import PropTypes from 'prop-types';
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -77,6 +78,7 @@ class MainPage extends React.Component {
             ContactForm: <ContactForm />
           }[this.state.viewOnPage]}
         </div>
+        <Modal />
       </div>
     );
 
