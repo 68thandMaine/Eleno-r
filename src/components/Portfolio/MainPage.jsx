@@ -1,12 +1,14 @@
 import React from 'react';
-import SideNav from './SideNav';
-import Home from './Home';
-import AboutMe from './AboutMe';
-import GalleryControl from '../../views/GalleryControl';
 import ContactForm from './ContactForm';
 import { connect } from 'react-redux';
 import { returnToGallery } from '../../actions';
 import PropTypes from 'prop-types';
+// Components
+import SideNav from './SideNav';
+import Home from './Home';
+import AboutMe from './AboutMe';
+import GalleryControl from '../../views/GalleryControl';
+import Modal from '../Modal/Modal';
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class MainPage extends React.Component {
     this.handleChangingViewToBio = this.handleChangingViewToBio.bind(this),
     this.handleChangingViewToGallery = this.handleChangingViewToGallery.bind(this),
     this.handleChangingviewToContactForm = this.handleChangingviewToContactForm.bind(this);
+    this.handleShowingModal = this.handleShowingModal.bind(this);
   }
 
   handleChangingViewToHome() {
@@ -35,6 +38,10 @@ class MainPage extends React.Component {
   handleChangingviewToContactForm() {
     this.setState({ viewOnPage: 'ContactForm' });
     this.props.dispatch(returnToGallery());
+  }
+
+  handleShowingModal() {
+    this.setState({ viewOnPage: 'Modal'});
   }
   render() {
 
