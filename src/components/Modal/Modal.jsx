@@ -5,15 +5,14 @@ import './Modal.css';
 
 const modal = (props) => {
   return (
-    <div className='modal-wrapper'>
-      <div className='modal-header'>
-        <h3>Modal Header</h3>
-      </div>
-      <div className='modal-body'>
-        <div>{props.children}</div>
-      </div>
-      <div className = 'modal-footer'>
-        <button className='btn-cancel' onClick={props.close}>Close</button>
+    <div className='modal-mask'>
+      <div className='modal-wrapper'>
+        <div className='modal-container'>
+          <div className='modal-body'>
+            <div>{props.children}</div>
+            <button className='btn-cancel' onClick={props.close}>Close</button>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -21,6 +20,6 @@ const modal = (props) => {
 
 modal.propTypes = {
   close: PropTypes.func.isRequired
-}
+};
 
 export default modal;
