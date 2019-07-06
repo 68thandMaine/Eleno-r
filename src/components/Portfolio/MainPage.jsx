@@ -1,25 +1,26 @@
 import React from 'react';
-import ContactForm from './ContactForm';
 import { connect } from 'react-redux';
 import { returnToGallery } from '../../actions';
 import PropTypes from 'prop-types';
 // Components
-import SideNav from './SideNav';
-import Home from './Home';
 import AboutMe from './AboutMe';
+import ContactForm from './ContactForm';
 import GalleryControl from '../../views/GalleryControl';
+import Home from './Home';
 import Modal from '../Modal/Modal';
+import SideNav from './SideNav';
 
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewOnPage: 'ContactForm'
+      viewOnPage: 'ContactForm',
+      showModal: false
     };
     this.handleChangingViewToHome = this.handleChangingViewToHome.bind(this),
     this.handleChangingViewToBio = this.handleChangingViewToBio.bind(this),
     this.handleChangingViewToGallery = this.handleChangingViewToGallery.bind(this),
-    this.handleChangingviewToContactForm = this.handleChangingviewToContactForm.bind(this);
+    this.handleChangingviewToContactForm = this.handleChangingviewToContactForm.bind(this),
     this.handleShowingModal = this.handleShowingModal.bind(this);
   }
 
@@ -39,9 +40,9 @@ class MainPage extends React.Component {
     this.setState({ viewOnPage: 'ContactForm' });
     this.props.dispatch(returnToGallery());
   }
-
   handleShowingModal() {
-    this.setState({ viewOnPage: 'Modal'});
+    console.log('show that modal baby woo!');
+    this.setState({ showModal: true });
   }
   render() {
 
@@ -81,8 +82,9 @@ class MainPage extends React.Component {
             Home: <Home />,
             Bio: <AboutMe />,
             Gallery: <GalleryControl galleryByCategory={this.props.gallery}/>,
-            ContactForm: <ContactForm />
+            ContactForm: <ContactForm showModal={this.handleShowingModal} />
           }[this.state.viewOnPage]}
+        <Modal />
         </div>
       </div>
     );

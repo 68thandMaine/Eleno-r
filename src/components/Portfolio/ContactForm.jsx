@@ -87,11 +87,14 @@ function Contact(props) {
     _message.value = '';
   }
 
-  function handleContactingCreator(event){
+  async function handleContactingCreator(event){  
     event.preventDefault();
-    const {dispatch} = props;
-    dispatch(uploadMessage(_firstName.value, _lastName.value, _email.value, _subject.value, _message.value));
-    resetForm();
+    // const {dispatch} = props;
+      const statusCode = await uploadMessage(_firstName.value, _lastName.value, _email.value, _subject.value, _message.value);
+      console.log(status);
+
+    // props.showModal();
+    // resetForm();
   }
 
   return (
@@ -152,8 +155,7 @@ function Contact(props) {
             }}/>
 
           <button type='submit' style={buttonStyles}>Submit</button>
-        <SuccessMessage />
-
+          <SuccessMessage />
         </form>
       </div>
     </div>
@@ -162,6 +164,7 @@ function Contact(props) {
 
 Contact.propTypes = {
   dispatch: PropTypes.func,
+  showModal: PropTypes.func,
 };
 
 export default connect()(Contact);
