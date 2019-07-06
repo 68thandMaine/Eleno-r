@@ -25,6 +25,7 @@ class MainPage extends React.Component {
     this.handleChangingViewToGallery = this.handleChangingViewToGallery.bind(this),
     this.handleChangingviewToContactForm = this.handleChangingviewToContactForm.bind(this),
     this.handleShowingModal = this.handleShowingModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   handleChangingViewToHome() {
@@ -47,6 +48,10 @@ class MainPage extends React.Component {
     console.log('show that modal baby woo!', message);
     this.setState({ showModal: true });
   }
+  closeModal(){
+    this.handleChangingViewToHome();
+    this.setState({showModal: false });
+  }
   
   render() {
 
@@ -62,14 +67,14 @@ class MainPage extends React.Component {
           </div>
           <div className='contentStyles'>
             {{
-            // Home: <Home />,
+            Home: <Home />,
             // Bio: <AboutMe />,
             // Gallery: <GalleryControl galleryByCategory={this.props.gallery}/>,
               ContactForm: <ContactForm showModal={this.handleShowingModal} />
             }[this.state.viewOnPage]}
           </div>
         </div>
-        { this.state.showModal ? <Modal> <Message></Message> </Modal> : null }
+        { this.state.showModal ? <Modal close={this.closeModal}> <Message></Message> </Modal> : null }
       </div>
     );
 

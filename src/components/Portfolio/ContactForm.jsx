@@ -3,7 +3,7 @@ import './../../styles.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { uploadMessage } from '../../actions/messageActions';
-import SuccessMessage from './Message';
+
 
 function Contact(props) {
   let _firstName =null;
@@ -152,7 +152,6 @@ function Contact(props) {
             }}/>
 
           <button type='submit' style={buttonStyles}>Submit</button>
-          <SuccessMessage />
         </form>
       </div>
     </div>

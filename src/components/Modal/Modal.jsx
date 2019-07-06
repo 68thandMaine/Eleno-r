@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 // Stylesheet
 import './Modal.css';
 
@@ -8,10 +8,9 @@ const modal = (props) => {
     <div className='modal-wrapper'>
       <div className='modal-header'>
         <h3>Modal Header</h3>
-        <span className='close-modal-btn' onClick={props.close}>x</span>
       </div>
       <div className='modal-body'>
-        <p>{props.children}</p>
+        <div>{props.children}</div>
       </div>
       <div className = 'modal-footer'>
         <button className='btn-cancel' onClick={props.close}>Close</button>
@@ -19,5 +18,9 @@ const modal = (props) => {
     </div>
   );
 };
+
+modal.propTypes = {
+  close: PropTypes.func.isRequired
+}
 
 export default modal;
