@@ -18,7 +18,8 @@ class MainPage extends React.Component {
     super(props);
     this.state = {
       viewOnPage: 'ContactForm',
-      showModal: false
+      showModal: false,
+      modalMessage: '',
     };
     this.handleChangingViewToHome = this.handleChangingViewToHome.bind(this),
     this.handleChangingViewToBio = this.handleChangingViewToBio.bind(this),
@@ -45,7 +46,7 @@ class MainPage extends React.Component {
     this.props.dispatch(returnToGallery());
   }
   handleShowingModal(message) {
-    console.log('show that modal baby woo!', message);
+    this.setState({ modalMessage: message});
     this.setState({ showModal: true });
   }
   closeModal(){
@@ -74,7 +75,7 @@ class MainPage extends React.Component {
             }[this.state.viewOnPage]}
           </div>
         </div>
-        { this.state.showModal ? <Modal close={this.closeModal}> <Message></Message> </Modal> : null }
+        { this.state.showModal ? <Modal close={this.closeModal}> <Message modalMessage={this.state.modalMessage}></Message> </Modal> : null }
       </div>
     );
 
