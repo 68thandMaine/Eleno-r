@@ -7,8 +7,11 @@ import AboutMe from './AboutMe';
 import ContactForm from './ContactForm';
 import GalleryControl from '../../views/GalleryControl';
 import Home from './Home';
+import Message from './Message';
 import Modal from '../Modal/Modal';
 import SideNav from './SideNav';
+// Stylesheet
+import './Styles/MainPage.css';
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -44,48 +47,29 @@ class MainPage extends React.Component {
     console.log('show that modal baby woo!', message);
     this.setState({ showModal: true });
   }
+  
   render() {
 
-    const containerStyles = {
-      display: 'flex',
-      flexDirection: 'row',
-      width: 'auto'
-    };
-    const menuStyles = {
-      position: 'fixed',
-      alignSelf: 'flex',
-      width: '50px',
-      left: '5%',
-      paddingRight: '25px'
-    };
-    const contentStyles = {
-      display: 'flex',
-      width: '75%',
-      margin: '0 100px 0 200px',
-      paddingLeft: '6%',
-      paddingRight: '5%',
-      position: 'relative',
-      top: '63px',
-    };
-
     return (
-      <div style={containerStyles}>
-        <div style={menuStyles}>
-          <SideNav
-            onViewHomePage={this.handleChangingViewToHome}
-            onViewBio={this.handleChangingViewToBio}
-            onViewGallery={this.handleChangingViewToGallery}
-            onViewContactForm={this.handleChangingviewToContactForm} />
-        </div>
-        <div style={contentStyles}>
-          {{
+      <div>
+        <div className={this.state.showModal ? 'containerStyles blur' : 'containerStyles'}>
+          <div className='menuStyles'>
+            <SideNav
+              onViewHomePage={this.handleChangingViewToHome}
+              onViewBio={this.handleChangingViewToBio}
+              onViewGallery={this.handleChangingViewToGallery}
+              onViewContactForm={this.handleChangingviewToContactForm} />
+          </div>
+          <div className='contentStyles'>
+            {{
             // Home: <Home />,
             // Bio: <AboutMe />,
             // Gallery: <GalleryControl galleryByCategory={this.props.gallery}/>,
-            ContactForm: <ContactForm showModal={this.handleShowingModal} />
-          }[this.state.viewOnPage]}
-        <Modal />
+              ContactForm: <ContactForm showModal={this.handleShowingModal} />
+            }[this.state.viewOnPage]}
+          </div>
         </div>
+        { this.state.showModal ? <Modal> <Message></Message> </Modal> : null }
       </div>
     );
 
