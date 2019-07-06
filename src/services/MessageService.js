@@ -6,6 +6,7 @@ export default class MessageService {
     return new Promise ( async (resolve, reject) => {
       try {
         const res =  await Api().post('/message', message);
+        console.log('sendMessage response', res);
         resolve(res.status);
       } catch (err) {
         reject(err);

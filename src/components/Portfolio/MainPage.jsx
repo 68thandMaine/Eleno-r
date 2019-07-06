@@ -40,8 +40,8 @@ class MainPage extends React.Component {
     this.setState({ viewOnPage: 'ContactForm' });
     this.props.dispatch(returnToGallery());
   }
-  handleShowingModal() {
-    console.log('show that modal baby woo!');
+  handleShowingModal(message) {
+    console.log('show that modal baby woo!', message);
     this.setState({ showModal: true });
   }
   render() {
@@ -79,9 +79,9 @@ class MainPage extends React.Component {
         </div>
         <div style={contentStyles}>
           {{
-            Home: <Home />,
-            Bio: <AboutMe />,
-            Gallery: <GalleryControl galleryByCategory={this.props.gallery}/>,
+            // Home: <Home />,
+            // Bio: <AboutMe />,
+            // Gallery: <GalleryControl galleryByCategory={this.props.gallery}/>,
             ContactForm: <ContactForm showModal={this.handleShowingModal} />
           }[this.state.viewOnPage]}
         <Modal />

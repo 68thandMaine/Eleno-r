@@ -89,12 +89,9 @@ function Contact(props) {
 
   async function handleContactingCreator(event){  
     event.preventDefault();
-    // const {dispatch} = props;
-      const statusCode = await uploadMessage(_firstName.value, _lastName.value, _email.value, _subject.value, _message.value);
-      console.log(status);
-
-    // props.showModal();
-    // resetForm();
+    const statusCode = await uploadMessage(_firstName.value, _lastName.value, _email.value, _subject.value, _message.value);
+    (statusCode === 204) ? props.showModal('success') : props.showModal('failure');
+    resetForm();
   }
 
   return (
