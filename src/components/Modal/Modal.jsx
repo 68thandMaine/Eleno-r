@@ -10,7 +10,7 @@ const modal = (props) => {
         <div className='modal-container'>
           <div className='modal-body'>
             <div>{props.children}</div>
-            <button className='btn-cancel' onClick={props.close}>Close</button>
+            <button className='btn-cancel' onClick={props.close} data-cy='closeModalBtn'>Close</button>
           </div>
         </div>
       </div>

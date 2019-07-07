@@ -1,26 +1,18 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This is will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+// Contact Form Commands
+
+Cypress.Commands.add('fillOutContactForm_Correctly', () => {
+  cy.get('[data-cy=\'firstName_Input\']').type('Charles');
+  cy.get('[data-cy=\'lastName_Input\']').type('Peterson');
+  cy.get('[data-cy=\'email_Input\']').type('cpeterson@yahoo.com');
+  cy.get('[data-cy=\'subject_Input\']').type('Testing');
+  cy.get('[data-cy=\'message_Input\']').type('Testing the message input via Cypress');
+});
+
+Cypress.Commands.add('fillOutContactForm_Incorrectly', () => {
+  cy.get('[data-cy=\'firstName_Input\']').type(' ');
+  cy.get('[data-cy=\'lastName_Input\']').type(' ');
+  cy.get('[data-cy=\'email_Input\']').type(' ');
+  cy.get('[data-cy=\'subject_Input\']').type(' ');
+  cy.get('[data-cy=\'message_Input\']').type(' ');
+});
 
