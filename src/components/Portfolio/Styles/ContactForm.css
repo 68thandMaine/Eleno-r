@@ -71,3 +71,7 @@
   margin-top: 2%;
   width: 100px;
 }
+
+.required {
+  border-color: red;
+}
