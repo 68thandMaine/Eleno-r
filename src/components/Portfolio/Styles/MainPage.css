@@ -1,0 +1,28 @@
+.containerStyles {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+}
+.blur {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);
+}
+.menuStyles {
+  position: fixed;
+  align-self: flex;
+  width: 50px;
+  left: 5%;
+  padding-right: 25px;
+}
+.contentStyles {
+  display: flex;
+  width: 75%;
+  margin: 0 100px 0 200px;
+  padding-left: 6%;
+  padding-right: 5%;
+  position: relative;
+  top: 63px;
+}

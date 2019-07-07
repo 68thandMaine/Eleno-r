@@ -1,0 +1,50 @@
+.modal-mask {
+  background-color: rgba(0, 0, 0, .5);
+  border: 1px solid #d0cccc;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px rgba(0,0,0,0.17);
+  display: table;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  transition: opacity .3s ease;
+  width: 100%; 
+  z-index: 1000;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.modal-body {
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.btn-cancel:hover {
+  color: black;
+}
+
+.btn-cancel {
+  background: coral;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  padding: 10px;
+}

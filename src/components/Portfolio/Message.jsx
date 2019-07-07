@@ -1,12 +1,16 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
-const SuccessMessage = () => {
+const SuccessMessage = (props) => {
 
   return (
     <div>
-      <h1>Thanks for reaching out. Your message has been succesfully sent.</h1>
+      {props.modalMessage}
     </div>
   );
 };
 
+SuccessMessage.propTypes = {
+  modalMessage: propTypes.string.isRequired,
+}
 export default SuccessMessage;

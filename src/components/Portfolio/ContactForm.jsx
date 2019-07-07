@@ -1,167 +1,150 @@
 import React from 'react';
-import './../../styles.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { uploadMessage } from '../../actions/messageActions';
-import SuccessMessage from './Message';
+// Stylesheets
+import './../../styles.css';
+import './Styles/ContactForm.css';
 
-function Contact(props) {
-  let _firstName =null;
-  let _lastName =null;
-  let _email = null;
-  let _subject = null;
-  let _message = null;
 
-  const wrapperStyles ={
-    display: 'block',
-    alignItems: 'center',
-    position: 'relative',
-    height: 'auto',
-    width: '100%',
-    top: '-12%',
-    marginRight: '20%',
-  };
-  const headingStyles = {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-    marginBottom: '10px'
-  };
-  const titleStyle = {
-    fontFamily: 'danielBold',
-    fontSize: '40px',
-    display: 'inline-block',
-    marginBottom: '0'
-  };
-  const subTitleStyles = {
-    display: 'inline-block',
-    bottom: '20px'
-  };
-  const formWrapper = {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    maxHeight: 'auto',
-  };
-  const formStyles = {
-    display: 'inline-flex',
-    width: '500px',
-    flexDirection: 'column',
-    flexWrap: 'nowrap'
-  };
-  const labelStyles ={
-    marginTop: '2%',
-    float:'none',
-    display: 'inline-block',
-    fontWeight:'bold',
-    fontFamily: 'Montserrat, sans-serif'
-  };
-
-  const inputTagStyles = {
-    background: 'rgba(0,0,0,0.08)',
-    borderRadius: 'unset',
-    boxSizing: 'border-box',
-    color: 'rgba(0,0,0,0.70)',
-    lineHeight: '1.235',
-    fontSize: '22px',
-    padding: '12px 12px'
-  };
-  const buttonStyles={
-    backgroundColor: '#000000',
-    border: 'none',
-    borderRadius: 'unset',
-    boxSizing: 'border-box',
-    color: '#ffffff',
-    height: '30px',
-    width: '100px',
-    marginTop: '2%',
-  };
-
-  function resetForm() {
-    _firstName.value = '',
-    _lastName.value = '',
-    _email.value = '',
-    _subject.value = '',
-    _message.value = '';
+class ContactForm extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      invalidFirstNameInput: false,
+      invalidLastNameInput: false,
+      invalidEmailInput: false,
+      invalidSubjectInput: false,
+      invalidMessageInput: false,
+      _firstName: '',
+      _lastName : '',
+      _email: '',
+      _subject: '',
+      _message: '',
+    };
+    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+    this.handleLastNameChange = this.handleLastNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleSubjectChange = this.handleSubjectChange.bind(this);
+    this.handleMessageChange = this.handleMessageChange.bind(this);
+    
+    this.handleContactFormSubmission = this.handleContactFormSubmission.bind(this);
+    this.validateFormFields = this.validateFormFields.bind(this);
   }
 
-  function handleContactingCreator(event){
+
+  handleFirstNameChange(event) {
+    this.setState({_firstName : event.target.value});
+  }
+  handleLastNameChange(event) {
+    this.setState({_lastName : event.target.value});
+  }
+  handleEmailChange(event) {
+    this.setState({_email : event.target.value});
+  }
+  handleSubjectChange(event){
+    this.setState({_subject : event.target.value});
+  }
+  handleMessageChange(event) {
+    this.setState({_message : event.target.value});
+  }
+  validateFormFields() {
+    (this.state._firstName === '') ? this.setState({invalidFirstNameInput: true}) : this.setState({invalidFirstNameInput: false});
+    (this.state._lastName === '') ? this.setState({invalidLastNameInput: true}) : this.setState({invalidLastNameInput: false});
+    (this.state._email === '') ? this.setState({invalidEmailInput: true}) : this.setState({invalidEmailInput: false});
+    (this.state._subject === '') ? this.setState({invalidSubjectInput: true}) : this.setState({invalidSubjectInput: false});
+    (this.state._message === '') ? this.setState({invalidMessageInput: true}) : this.setState({invalidMessageInput: false});
+    
+    if (this.state._firstName != '' && this.state._lastName != '' && this.state._email != '' && this.state._subject != '' && this.state_message != '') {
+      return true;
+    }
+  }
+
+  async handleContactFormSubmission(event){  
     event.preventDefault();
-    const {dispatch} = props;
-    dispatch(uploadMessage(_firstName.value, _lastName.value, _email.value, _subject.value, _message.value));
-    resetForm();
+    const validatedForm = this.validateFormFields();
+    if (validatedForm) {
+      const statusCode = await uploadMessage(this.state._firstName, this.state._lastName, this.state._email, this.state._subject, this.state._message);
+      (statusCode === 204) ? this.props.showModal('Your message has been successfully sent. Thanks for reaching out!') : this.props.showModal('Something went, please try again later.');
+      // resetForm();
+    } 
   }
+  render(){
+    return (
+      <div className='contactForm_Wrapper'>
+        <div className='contactForm_Header'>
+          <p className='contactForm_Title' data-cy='viewName'>
+            Contact</p>
+          <p className='contactForm_Subtitle'>For all inquiries large or small - please use the form below.</p>
+        </div>
+        <div className='contactForm_FormWrapper'>
+          <form className='contactForm_Style' onSubmit={this.handleContactFormSubmission}>
 
-  return (
-    <div style={wrapperStyles}>
-      <div style={headingStyles}>
-        <p style={titleStyle}>
-          Contact</p>
-        <p style={subTitleStyles}>For all inquiries large or small - please use the form below.</p>
+            <label className='contactForm_Label' data-cy='firstName_Label'>First name<span className='required'>(required)</span></label>
+            <input
+              data-cy='firstName_Input'
+              className={this.state.invalidFirstNameInput ? 'contactForm_Input required' : 'contactForm_Input'}
+              type='text'
+              id='firstName'
+              value={this.state._firstName}
+              onChange={this.handleFirstNameChange}
+            />
+
+            <label className='contactForm_Label' data-cy='lastName_Label'>Last name<span className='required'>(required)</span></label>
+            <input
+              data-cy='lastName_Input'
+              className={this.state.invalidLastNameInput ? 'contactForm_Input required' : 'contactForm_Input'}
+              type='text'
+              id='lastName'
+              value={this.state._lastName}
+              onChange={this.handleLastNameChange}
+            />
+
+
+            <label  className='contactForm_Label' data-cy='email_Label'>Email<span className='required'>(required)</span></label>
+            <input
+              data-cy='email_Input'
+              className={this.state.invalidEmailInput ? 'contactForm_Input required' : 'contactForm_Input'}
+              type='text'
+              id='email'
+              value={this.state._email}
+              onChange={this.handleEmailChange}
+            />
+
+
+            <label className='contactForm_Label' data-cy='subject_Label'>Subject<span className='required'>(required)</span></label>
+            <input
+              data-cy='subject_Input'
+              className={this.state.invalidSubjectInput ? 'contactForm_Input required' : 'contactForm_Input'}
+              type='text'
+              id='subject'
+              value={this.state._subject}
+              onChange={this.handleSubjectChange}
+            />
+
+
+            <label  className='contactForm_Label' data-cy='message_Label'>Message<span className='required'>(required)</span></label>
+            <textarea
+              data-cy='message_Input'
+              className={this.state.invalidMessageInput ? 'required' : ''}
+              type='text'
+              id='message'
+              value={this.state._message}
+              onChange={this.handleMessageChange}
+            />
+
+            <button type='submit' className='contactForm_Button' data-cy='btn-submit'>Submit</button>
+          </form>
+        </div>
       </div>
-      <div style={formWrapper}>
-        <form style={formStyles} onSubmit={handleContactingCreator}>
-
-          <label style={labelStyles}>First name<span className='required'>(required)</span></label>
-          <input
-            style={inputTagStyles}
-            type='text'
-            id='firstName'
-            ref={(input) => {
-              _firstName = input;
-            }}/>
-
-          <label style={labelStyles}>Last name<span className='required'>(required)</span></label>
-          <input
-            style={inputTagStyles}
-            type='text'
-            id='lastName'
-            ref={(input) => {
-              _lastName = input;
-            }}/>
-
-
-          <label  style={labelStyles}>Email<span className='required'>(required)</span></label>
-          <input
-            style={inputTagStyles}
-            type='text'
-            id='email'
-            ref={(input) => {
-              _email = input;
-            }}/>
-
-
-          <label style={labelStyles}>Subject</label>
-          <input
-            style={inputTagStyles}
-            type='text'
-            id='subject'
-            ref={(input) => {
-              _subject = input;
-            }}/>
-
-
-          <label  style={labelStyles}>Message</label>
-          <textarea
-            type='text'
-            id='message'
-            ref={(textarea) => {
-              _message = textarea;
-            }}/>
-
-          <button type='submit' style={buttonStyles}>Submit</button>
-        <SuccessMessage />
-
-        </form>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
-Contact.propTypes = {
+
+ContactForm.propTypes = {
   dispatch: PropTypes.func,
+  showModal: PropTypes.func,
 };
 
-export default connect()(Contact);
+export default connect()(ContactForm);

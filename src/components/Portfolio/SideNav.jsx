@@ -56,10 +56,10 @@ function SideNav(props) {
         <Link style={styles.elenor} to='/Admin'><span>Elenor</span></Link>
       </div>
       <ul style={styles.menuStyles}>
-        <li key='1' style={styles.linkStyles} onClick={props.onViewHomePage}>Home</li>
-        <li key='2' style={[styles.linkStyles]} onClick={props.onViewBio}>Bio</li>
-        <li key='3' style={[styles.linkStyles]} onClick={props.onViewGallery}>Selected Works</li>
-        <li key='4' style={[styles.linkStyles]} onClick={props.onViewContact}>Contact</li>
+        <li key='1' style={styles.linkStyles} onClick={props.onViewHomePage} data-cy='homeButton'>Home</li>
+        <li key='2' style={[styles.linkStyles]} onClick={props.onViewBio} data-cy='bioButton'>Bio</li>
+        <li key='3' style={[styles.linkStyles]} onClick={props.onViewGallery} data-cy='galleryButton'>Selected Works</li>
+        <li key='4' style={[styles.linkStyles]} onClick={props.onViewContactForm} data-cy='contactButton'>Contact</li>
       </ul>
     </div>
   );
@@ -70,7 +70,7 @@ SideNav.propTypes = {
   onViewHomePage: PropTypes.func.isRequired,
   onViewBio: PropTypes.func.isRequired,
   onViewGallery: PropTypes.func.isRequired,
-  onViewContact: PropTypes.func.isRequired
+  onViewContactForm: PropTypes.func.isRequired
 };
 
 
