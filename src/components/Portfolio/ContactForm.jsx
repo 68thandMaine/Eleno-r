@@ -1,8 +1,10 @@
 import React from 'react';
-import './../../styles.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { uploadMessage } from '../../actions/messageActions';
+// Stylesheets
+import './../../styles.css';
+import './Styles/ContactForm.css';
 
 
 function Contact(props) {
@@ -12,72 +14,7 @@ function Contact(props) {
   let _subject = null;
   let _message = null;
 
-  const wrapperStyles ={
-    display: 'block',
-    alignItems: 'center',
-    position: 'relative',
-    height: 'auto',
-    width: '100%',
-    top: '-12%',
-    marginRight: '20%',
-  };
-  const headingStyles = {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-    marginBottom: '10px'
-  };
-  const titleStyle = {
-    fontFamily: 'danielBold',
-    fontSize: '40px',
-    display: 'inline-block',
-    marginBottom: '0'
-  };
-  const subTitleStyles = {
-    display: 'inline-block',
-    bottom: '20px'
-  };
-  const formWrapper = {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    maxHeight: 'auto',
-  };
-  const formStyles = {
-    display: 'inline-flex',
-    width: '500px',
-    flexDirection: 'column',
-    flexWrap: 'nowrap'
-  };
-  const labelStyles ={
-    marginTop: '2%',
-    float:'none',
-    display: 'inline-block',
-    fontWeight:'bold',
-    fontFamily: 'Montserrat, sans-serif'
-  };
 
-  const inputTagStyles = {
-    background: 'rgba(0,0,0,0.08)',
-    borderRadius: 'unset',
-    boxSizing: 'border-box',
-    color: 'rgba(0,0,0,0.70)',
-    lineHeight: '1.235',
-    fontSize: '22px',
-    padding: '12px 12px'
-  };
-  const buttonStyles={
-    backgroundColor: '#000000',
-    border: 'none',
-    borderRadius: 'unset',
-    boxSizing: 'border-box',
-    color: '#ffffff',
-    height: '30px',
-    width: '100px',
-    marginTop: '2%',
-  };
 
   function resetForm() {
     _firstName.value = '',
@@ -87,35 +24,42 @@ function Contact(props) {
     _message.value = '';
   }
 
-  async function handleContactingCreator(event){  
+  // function validateFormFields() {
+  //   (_firstName.value == null || '') ? 
+  // }
+
+  async function handleContactFormSubmission(event){  
     event.preventDefault();
+    // validateFormFields();
     const statusCode = await uploadMessage(_firstName.value, _lastName.value, _email.value, _subject.value, _message.value);
-    (statusCode === 204) ? props.showModal('success') : props.showModal('failure');
+    (statusCode === 204) ? props.showModal('Your message has been successfully sent. Thanks for reaching out!') : props.showModal('Something went, please try again later.');
     resetForm();
   }
 
   return (
-    <div style={wrapperStyles}>
-      <div style={headingStyles}>
-        <p id='viewName' style={titleStyle} data-cy='viewName'>
+    <div className='contactForm_Wrapper'>
+      <div className='contactForm_Header'>
+        <p className='contactForm_Title' data-cy='viewName'>
           Contact</p>
-        <p style={subTitleStyles}>For all inquiries large or small - please use the form below.</p>
+        <p className='contactForm_Subtitle'>For all inquiries large or small - please use the form below.</p>
       </div>
-      <div style={formWrapper}>
-        <form style={formStyles} onSubmit={handleContactingCreator}>
+      <div className='contactForm_FormWrapper'>
+        <form className='contactForm_Style' onSubmit={handleContactFormSubmission}>
 
-          <label style={labelStyles}>First name<span className='required'>(required)</span></label>
+          <label className='contactForm_Label' data-cy='firstName_Label'>First name<span className='required'>(required)</span></label>
           <input
-            style={inputTagStyles}
+            data-cy='firstName_Input'
+            className='contactForm_Input'
             type='text'
             id='firstName'
             ref={(input) => {
               _firstName = input;
             }}/>
 
-          <label style={labelStyles}>Last name<span className='required'>(required)</span></label>
+          <label className='contactForm_Label' data-cy='lastName_Label'>Last name<span className='required'>(required)</span></label>
           <input
-            style={inputTagStyles}
+            data-cy='lastName_Input'
+            className='contactForm_Input'
             type='text'
             id='lastName'
             ref={(input) => {
@@ -123,9 +67,10 @@ function Contact(props) {
             }}/>
 
 
-          <label  style={labelStyles}>Email<span className='required'>(required)</span></label>
+          <label  className='contactForm_Label' data-cy='email_Label'>Email<span className='required'>(required)</span></label>
           <input
-            style={inputTagStyles}
+            data-cy='email_Input'
+            className='contactForm_Input'
             type='text'
             id='email'
             ref={(input) => {
@@ -133,9 +78,10 @@ function Contact(props) {
             }}/>
 
 
-          <label style={labelStyles}>Subject</label>
+          <label className='contactForm_Label' data-cy='subject_Label'>Subject<span className='required'>(required)</span></label>
           <input
-            style={inputTagStyles}
+            data-cy='subject_Input'
+            className='contactForm_Input'
             type='text'
             id='subject'
             ref={(input) => {
@@ -143,15 +89,16 @@ function Contact(props) {
             }}/>
 
 
-          <label  style={labelStyles}>Message</label>
+          <label  className='contactForm_Label' data-cy='message_Label'>Message<span className='required'>(required)</span></label>
           <textarea
+            data-cy='message_input'
             type='text'
             id='message'
             ref={(textarea) => {
               _message = textarea;
             }}/>
 
-          <button type='submit' style={buttonStyles}>Submit</button>
+          <button type='submit' className='contactForm_Button' data-cy='btn-submit'>Submit</button>
         </form>
       </div>
     </div>
