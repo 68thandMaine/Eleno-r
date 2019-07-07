@@ -17,7 +17,7 @@ class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewOnPage: 'ContactForm',
+      viewOnPage: 'Home',
       showModal: false,
       modalMessage: '',
     };
@@ -69,8 +69,8 @@ class MainPage extends React.Component {
           <div className='contentStyles'>
             {{
             Home: <Home />,
-            // Bio: <AboutMe />,
-            // Gallery: <GalleryControl galleryByCategory={this.props.gallery}/>,
+            Bio: <AboutMe />,
+            Gallery: <GalleryControl galleryByCategory={this.props.gallery}/>,
               ContactForm: <ContactForm showModal={this.handleShowingModal} />
             }[this.state.viewOnPage]}
           </div>

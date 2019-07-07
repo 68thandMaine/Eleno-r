@@ -5,7 +5,7 @@ import './Modal.css';
 
 const modal = (props) => {
   return (
-    <div className='modal-mask'>
+    <div className='modal-mask' data-cy='modal'>
       <div className='modal-wrapper'>
         <div className='modal-container'>
           <div className='modal-body'>

@@ -97,7 +97,7 @@ function Contact(props) {
   return (
     <div style={wrapperStyles}>
       <div style={headingStyles}>
-        <p style={titleStyle}>
+        <p id='viewName' style={titleStyle} data-cy='viewName'>
           Contact</p>
         <p style={subTitleStyles}>For all inquiries large or small - please use the form below.</p>
       </div>
