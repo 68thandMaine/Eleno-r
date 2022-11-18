@@ -29,7 +29,7 @@
     "react-router-dom": "^4.0.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "styled-jsx": "^3.2.1",
+    "styled-jsx": "^5.1.0",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
@@ -46,7 +46,7 @@
     "eslint-plugin-react": "^7.12.4",
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^2.29.0",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^20.0.4",
     "react-hot-loader": "^3.0.0-beta.7",
     "style-loader": "^0.23.1",
